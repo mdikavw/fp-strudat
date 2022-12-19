@@ -3,14 +3,14 @@
 #include <string.h>
 
 struct listNode {
-    int kode;
     char nama[30];
     listNode * next;
 };
 typedef struct listNode listNode;
 
 struct queueNode {
-    int kodeBarang;
+    char namaBarang[30];
+    char namaPembeli[30];
     queueNode * next;
 };
 typedef struct queueNode queueNode;
