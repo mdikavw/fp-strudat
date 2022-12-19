@@ -24,6 +24,15 @@ typedef struct Queue Queue;
 
 int main(){
     char pilihan;
+
+    ListNode * pHead;
+    pHead = NULL;
+
+    Queue pQueue;
+    pQueue.length = 0;
+    pQueue.front = NULL;
+    pQueue.rear = NULL;
+
     printf("Program Pemesanan dan Penjualan Online Shop\n");
     do{
         printf("Masuk sebagai: \n");
