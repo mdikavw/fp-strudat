@@ -22,6 +22,19 @@ struct Queue {
 };
 typedef struct Queue Queue;
 
+void traverse(ListNode * pHead){
+    ListNode * pCur;
+    pCur = pHead;
+    if(pCur != NULL){
+        while(pCur != NULL){
+            printf("%s -> ", pCur->nama);
+            pCur = pCur->next;
+        }
+    }
+    printf("NULL\n");
+    return;
+}
+
 int main(){
     char pilihan;
 
@@ -53,6 +66,16 @@ int main(){
                 printf("q. Keluar\n");
                 printf("Masukkan pilihan: ");
                 scanf("%c", &pilihan);
+                if(pilihan == '1'){
+                    continue;
+                } else if(pilihan == '2'){
+                    continue;
+                } else if(pilihan == '3'){
+                    continue;
+                } else if(pilihan == '4'){
+                    traverse(pHead);
+                    system("pause");
+                }
                 system("cls");
             } while (pilihan != 'q');
         } else if(pilihan == '2'){
