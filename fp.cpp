@@ -2,19 +2,62 @@
 #include <stdlib.h>
 #include <string.h>
 
-struct listNode {
+struct ListNode {
     char nama[30];
-    listNode * next;
+    ListNode * next;
 };
 typedef struct listNode listNode;
 
-struct queueNode {
+struct QueueNode {
     char namaBarang[30];
     char namaPembeli[30];
-    queueNode * next;
+    QueueNode * next;
 };
 typedef struct queueNode queueNode;
 
+struct Queue {
+    int length;
+    QueueNode * front;
+    QueueNode * rear;
+};
+typedef struct Queue Queue;
+
 int main(){
+    char pilihan;
+    printf("Program Pemesanan dan Penjualan Online Shop\n");
+    do{
+        printf("Masuk sebagai: \n");
+        printf("1. Penjual\n");
+        printf("2. Pembeli\n");
+        printf("q. Keluar\n");
+        printf("Masukkan pilihan: ");
+        scanf("%c", &pilihan);
+        system("cls");
+        if(pilihan == '1'){
+            do{
+                printf("Pilihan Menu: \n");
+                printf("1. Lihat daftar produk\n");
+                printf("2. Tambah produk baru\n");
+                printf("3. Hapus produk\n\n");
+                printf("4. Lihat antrian\n");
+                printf("5. Proses antrian terdepan\n");
+                printf("q. Keluar\n");
+                printf("Masukkan pilihan: ");
+                scanf("%c", &pilihan);
+                system("cls");
+            } while (pilihan != 'q');
+        } else if(pilihan == '2'){
+            do{
+                printf("Pilihan Menu: \n");
+                printf("1. Lihat daftar produk\n");
+                printf("2. Pesan produk\n");
+                printf("q. Keluar\n");
+                printf("Masukkan pilihan: ");
+                scanf("%c", &pilihan);
+                system("cls");
+            } while (pilihan != 'q');
+        }
+    } while (pilihan != 'q');
+    
     return 0;
 }
