@@ -8,6 +8,7 @@ struct ListNode {
     ListNode * next;
 };
 typedef struct listNode listNode;
+void addBarang(ListNode **Head);
 
 struct QueueNode {
     char namaBarang[30];
@@ -34,6 +35,53 @@ void traverseList(ListNode * pHead){
     }
     printf("NULL\n");
     return;
+}
+
+void addBarang(ListNode ** pHead){
+    char nama[30], masukkanSetelah[30];
+    int stok;
+    ListNode * pNew, * pCur;
+    printf("Masukkan nama barang: ");
+    scanf(" %s", nama);
+    printf("Masukkan stok barang: ");
+    scanf("%i", &stok);
+
+    pNew = (ListNode *)malloc(sizeof(ListNode));
+    if(pNew == NULL){
+        printf("Memori tidak cukup\n");
+        system("pause");
+        return;
+    }
+    strcpy(pNew->nama, nama);
+    pNew->stok = stok;
+    pNew->next = NULL;
+
+    pCur = *pHead;
+
+    if(pCur == NULL){
+        *pHead = pNew;
+        return;
+    }
+  traverseList(*pHead);
+    printf("Masukkan barang setelah: ");
+    scanf(" %s", masukkanSetelah);
+
+    while(pCur != NULL && strcmp(pCur->nama, masukkanSetelah) != 0){
+        pCur = pCur->next;
+    }
+
+    if(pCur == NULL){
+        printf("Barang tidak ditemukan\n");
+        system("pause");
+        return;
+    }
+
+    if(pCur->next == NULL){
+        pNew->next = NULL;
+    } else {
+        pNew->next = pCur->next;
+    }
+    pCur->next = pNew;
 }
 
 void traverseQueue(Queue pQueue){
@@ -83,7 +131,7 @@ int main(){
                     traverseList(pHead);
                     system("pause");
                 } else if(pilihan == '2'){
-                    continue;
+                    addBarang(&pHead);
                 } else if(pilihan == '3'){
                     continue;
                 } else if(pilihan == '4'){
