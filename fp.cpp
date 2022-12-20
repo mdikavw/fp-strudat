@@ -4,6 +4,7 @@
 
 struct ListNode {
     char nama[30];
+    int stok;
     ListNode * next;
 };
 typedef struct listNode listNode;
