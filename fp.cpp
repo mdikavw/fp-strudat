@@ -28,7 +28,7 @@ void traverseList(ListNode * pHead){
     pCur = pHead;
     if(pCur != NULL){
         while(pCur != NULL){
-            printf("%s -> ", pCur->nama);
+            printf("%s(%i) -> ", pCur->nama, pCur->stok);
             pCur = pCur->next;
         }
     }
