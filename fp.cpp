@@ -92,7 +92,7 @@ void enterQueue(queue queueObj){
     fflush(stdin);
     scanf("%d", &data_number);
     node* pHead = queueObj.front;
-    node * pNew=(queueNode *)malloc(sizeof(node));
+    node * pNew=(QueueNode *)malloc(sizeof(QueueNode));
  
     if (pNew != NULL){ 
         pNew->data = data_number;
