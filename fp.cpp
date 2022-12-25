@@ -86,13 +86,13 @@ void addBarang(ListNode ** pHead){
         }
         queueObj.rear = pNew;  
         queueObj.count++  ;
-}
-else{
+ }
+ else{
     printf("ERR: Barang Tidak Ditemukan");
     getch();
-} 
-return queueObj;
-}
+ } 
+ return queueObj;
+ }
     
   traverseList(*pHead);
     printf("Masukkan barang setelah: ");
