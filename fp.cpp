@@ -62,8 +62,29 @@ void addBarang(ListNode ** pHead){
         *pHead = pNew;
         return;
     }
-    
-  void enterQueue(queue queueObj){
+  traverseList(*pHead);
+    printf("Masukkan barang setelah: ");
+    scanf(" %s", masukkanSetelah);
+
+    while(pCur != NULL && strcmp(pCur->nama, masukkanSetelah) != 0){
+        pCur = pCur->next;
+    }
+
+    if(pCur == NULL){
+        printf("Barang tidak ditemukan\n");
+        system("pause");
+        return;
+    }
+
+    if(pCur->next == NULL){
+        pNew->next = NULL;
+    } else {
+        pNew->next = pCur->next;
+    }
+    pCur->next = pNew;
+}
+
+void enterQueue(queue queueObj){
     int data_number;
     system("cls");
     fflush(stdin); 
@@ -93,28 +114,6 @@ void addBarang(ListNode ** pHead){
  } 
  return queueObj;
  }
-    
-  traverseList(*pHead);
-    printf("Masukkan barang setelah: ");
-    scanf(" %s", masukkanSetelah);
-
-    while(pCur != NULL && strcmp(pCur->nama, masukkanSetelah) != 0){
-        pCur = pCur->next;
-    }
-
-    if(pCur == NULL){
-        printf("Barang tidak ditemukan\n");
-        system("pause");
-        return;
-    }
-
-    if(pCur->next == NULL){
-        pNew->next = NULL;
-    } else {
-        pNew->next = pCur->next;
-    }
-    pCur->next = pNew;
-}
 
 void traverseQueue(Queue pQueue){
     QueueNode * pCur;
