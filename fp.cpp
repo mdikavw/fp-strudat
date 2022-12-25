@@ -62,6 +62,38 @@ void addBarang(ListNode ** pHead){
         *pHead = pNew;
         return;
     }
+    
+  void enterQueue(queue queueObj){
+    int data_number;
+    system("cls");
+    fflush(stdin); 
+    printf("Masukkan Nama Barang : "); 
+    fflush(stdin);
+    scanf("%d", &data_number);
+    node* pHead = queueObj.front;
+    node * pNew=(node *)malloc(sizeof(node));
+ 
+    if (pNew != NULL){ 
+        pNew->data = data_number;
+        if(pHead!=NULL){
+        pHead->next = pNew;
+        pNew->next = NULL;
+        printf("pHead!NULL");
+        }else{
+        printf("pHeadNULL");
+            queueObj.front = pNew;
+            pNew->next=NULL;
+        }
+        queueObj.rear = pNew;  
+        queueObj.count++  ;
+}
+else{
+    printf("ERR: Barang Tidak Ditemukan");
+    getch();
+} 
+return queueObj;
+}
+    
   traverseList(*pHead);
     printf("Masukkan barang setelah: ");
     scanf(" %s", masukkanSetelah);
@@ -133,7 +165,7 @@ int main(){
                 } else if(pilihan == '2'){
                     addBarang(&pHead);
                 } else if(pilihan == '3'){
-                    continue;
+                    enterQueue(queueObj)   ;
                 } else if(pilihan == '4'){
                     traverseQueue(pQueue);
                     system("pause");
