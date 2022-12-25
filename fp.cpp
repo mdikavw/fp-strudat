@@ -84,36 +84,37 @@ void addBarang(ListNode ** pHead){
     pCur->next = pNew;
 }
 
-void enterQueue(queue queueObj){
-    int data_number;
-    system("cls");
-    fflush(stdin); 
-    printf("Masukkan Nama Barang : "); 
-    fflush(stdin);
-    scanf("%d", &data_number);
-    node* pHead = queueObj.front;
-    node * pNew=(QueueNode *)malloc(sizeof(QueueNode));
- 
-    if (pNew != NULL){ 
-        pNew->data = data_number;
-        if(pHead!=NULL){
-        pHead->next = pNew;
-        pNew->next = NULL;
-        printf("pHead!NULL");
-        }else{
-        printf("pHeadNULL");
-            queueObj.front = pNew;
-            pNew->next=NULL;
-        }
-        queueObj.rear = pNew;  
-        queueObj.count++  ;
- }
- else{
-    printf("ERR: Barang Tidak Ditemukan");
-    getch();
- } 
- return queueObj;
- }
+void enQueue(Queue * pQueue){
+    int MAX = 5;
+    QueueNode * pNew, * pCur;
+    char namaBarang[30], namaPembeli[30];
+    if(pQueue->length >= MAX){
+        printf("Antrian telah melebihi batas\n");
+        return;
+    }
+
+    printf("Masukkan nama barang: ");
+    scanf(" %s", namaBarang);
+    printf("Masukkan nama pembeli: ");
+    scanf(" %s", namaPembeli);
+
+    pNew = (QueueNode *)malloc(sizeof(QueueNode));
+    if(pNew == NULL){
+        printf("Memori tidak cukup\n");
+        system("pause");
+        return;
+    }
+    strcpy(pNew->namaBarang, namaBarang);
+    strcpy(pNew->namaPembeli, namaPembeli);
+    if(pQueue->front == NULL){
+        pQueue->front = pNew;
+        pQueue->rear = pNew;
+        system("pause");
+        return;
+    }
+    pQueue->rear->next = pNew;
+    pQueue->rear = pNew;
+}
 
 void traverseQueue(Queue pQueue){
     QueueNode * pCur;
