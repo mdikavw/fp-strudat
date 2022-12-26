@@ -122,6 +122,7 @@ void traverseQueue(Queue pQueue){
     if(pCur != NULL){
         while(pCur != pQueue.rear){
             printf("%s (%s) -> ", pCur->namaPembeli, pCur->namaBarang);
+            pCur = pCur->next;
         }
         printf("%s (%s) -> ", pCur->namaPembeli, pCur->namaBarang);
     }
@@ -129,7 +130,7 @@ void traverseQueue(Queue pQueue){
 }
 
 int main(){
-    char pilihan;
+    char pilihan, option;
 
     ListNode * pHead;
     pHead = NULL;
@@ -158,20 +159,20 @@ int main(){
                 printf("5. Proses antrian terdepan\n");
                 printf("q. Keluar\n");
                 printf("Masukkan pilihan: ");
-                scanf("%c", &pilihan);
-                if(pilihan == '1'){
+                scanf(" %c", &option);
+                if(option == '1'){
                     traverseList(pHead);
                     system("pause");
-                } else if(pilihan == '2'){
+                } else if(option == '2'){
                     addBarang(&pHead);
-                } else if(pilihan == '3'){
-                    enterQueue(queueObj)   ;
-                } else if(pilihan == '4'){
+                } else if(option == '3'){
+                    continue;
+                } else if(option == '4'){
                     traverseQueue(pQueue);
                     system("pause");
                 }
                 system("cls");
-            } while (pilihan != 'q');
+            } while (option != 'q');
         } else if(pilihan == '2'){
             do{
                 printf("Pilihan Menu: \n");
@@ -179,9 +180,14 @@ int main(){
                 printf("2. Pesan produk\n");
                 printf("q. Keluar\n");
                 printf("Masukkan pilihan: ");
-                scanf("%c", &pilihan);
+                scanf(" %c", &option);
+                if(option == '1'){
+                    continue;
+                } else if(option == '2'){
+                    continue;
+                } 
                 system("cls");
-            } while (pilihan != 'q');
+            } while (option != 'q');
         }
     } while (pilihan != 'q');
     
