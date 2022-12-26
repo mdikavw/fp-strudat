@@ -84,6 +84,38 @@ void addBarang(ListNode ** pHead){
     pCur->next = pNew;
 }
 
+void enQueue(Queue * pQueue){
+    int MAX = 5;
+    QueueNode * pNew, * pCur;
+    char namaBarang[30], namaPembeli[30];
+    if(pQueue->length >= MAX){
+        printf("Antrian telah melebihi batas\n");
+        return;
+    }
+
+    printf("Masukkan nama barang: ");
+    scanf(" %s", namaBarang);
+    printf("Masukkan nama pembeli: ");
+    scanf(" %s", namaPembeli);
+
+    pNew = (QueueNode *)malloc(sizeof(QueueNode));
+    if(pNew == NULL){
+        printf("Memori tidak cukup\n");
+        system("pause");
+        return;
+    }
+    strcpy(pNew->namaBarang, namaBarang);
+    strcpy(pNew->namaPembeli, namaPembeli);
+    if(pQueue->front == NULL){
+        pQueue->front = pNew;
+        pQueue->rear = pNew;
+        system("pause");
+        return;
+    }
+    pQueue->rear->next = pNew;
+    pQueue->rear = pNew;
+}
+
 void traverseQueue(Queue pQueue){
     QueueNode * pCur;
     pCur = pQueue.front;
