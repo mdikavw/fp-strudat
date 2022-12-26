@@ -62,7 +62,7 @@ void addBarang(ListNode ** pHead){
         *pHead = pNew;
         return;
     }
-  traverseList(*pHead);
+    traverseList(*pHead);
     printf("Masukkan barang setelah: ");
     scanf(" %s", masukkanSetelah);
 
@@ -84,9 +84,10 @@ void addBarang(ListNode ** pHead){
     pCur->next = pNew;
 }
 
-void enQueue(Queue * pQueue){
+void enQueue(Queue * pQueue, ListNode * pHead){
     int MAX = 5;
-    QueueNode * pNew, * pCur;
+    QueueNode * pNew;
+    ListNode * pCur;
     char namaBarang[30], namaPembeli[30];
     if(pQueue->length >= MAX){
         printf("Antrian telah melebihi batas\n");
@@ -97,6 +98,16 @@ void enQueue(Queue * pQueue){
     scanf(" %s", namaBarang);
     printf("Masukkan nama pembeli: ");
     scanf(" %s", namaPembeli);
+
+    pCur = pHead;
+    while(pCur != NULL && strcmp(strlwr(pCur->nama), strlwr(namaBarang)) != 0){
+        pCur = pCur->next;
+    }
+    if(pCur == NULL){
+        printf("Produk tidak tersedia\n");
+        system("pause");
+        return;
+    }
 
     pNew = (QueueNode *)malloc(sizeof(QueueNode));
     if(pNew == NULL){
@@ -113,7 +124,7 @@ void enQueue(Queue * pQueue){
         return;
     }
     pQueue->rear->next = pNew;
-    pQueue->rear = pNew;
+    pQueue->rear = pNew;
 }
 
 void traverseQueue(Queue pQueue){
@@ -184,7 +195,7 @@ int main(){
                 if(option == '1'){
                     continue;
                 } else if(option == '2'){
-                    continue;
+                    enQueue(&pQueue, pHead);
                 } 
                 system("cls");
             } while (option != 'q');
