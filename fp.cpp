@@ -91,6 +91,7 @@ void enQueue(Queue * pQueue, ListNode * pHead){
     char namaBarang[30], namaPembeli[30];
     if(pQueue->length >= MAX){
         printf("Antrian telah melebihi batas\n");
+        system("pause");
         return;
     }
 
@@ -120,11 +121,13 @@ void enQueue(Queue * pQueue, ListNode * pHead){
     if(pQueue->front == NULL){
         pQueue->front = pNew;
         pQueue->rear = pNew;
+        pQueue->length++;
         system("pause");
         return;
     }
     pQueue->rear->next = pNew;
     pQueue->rear = pNew;
+    pQueue->length++;
 }
 
 void traverseQueue(Queue pQueue){
@@ -138,6 +141,7 @@ void traverseQueue(Queue pQueue){
         printf("%s (%s) -> ", pCur->namaPembeli, pCur->namaBarang);
     }
     printf("NULL\n");
+    printf("Panjang antrian: %i\n", pQueue.length);
 }
 
 int main(){
