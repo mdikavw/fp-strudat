@@ -84,6 +84,46 @@ void addBarang(ListNode ** pHead){
     pCur->next = pNew;
 }
 
+void hapusBarang(ListNode ** pHead){
+    ListNode * pPrev, * pCur;
+    char namaBarang[30];
+    
+    pCur = *pHead;
+    pPrev = NULL;
+    if(pCur == NULL){
+        printf("Daftar produk kosong\n");
+        system("pause");
+        return;
+    }
+    traverseList(*pHead);
+    printf("Masukkan nama barang yang akan dihapus: ");
+    scanf(" %s", namaBarang);
+
+    while(pCur != NULL && strcmp(pCur->nama, namaBarang) != 0){
+        pPrev = pCur;
+        pCur = pCur->next;
+    }
+    if(pCur == NULL){
+        printf("Nama barang tidak ditemukan\n");
+        system("pause");
+        return;
+    }
+    if(pCur == *pHead){
+        *pHead = pCur->next;
+        free(pCur);
+        return;
+    }
+    if(pCur->next == NULL){
+        pPrev->next = NULL;
+        free(pCur);
+        return;
+    }
+    pPrev->next = pCur->next;
+    free(pCur);
+    return;
+}
+
+
 void enQueue(Queue * pQueue, ListNode * pHead){
     int MAX = 5;
     QueueNode * pNew;
@@ -204,7 +244,7 @@ int main(){
                 } else if(option == '2'){
                     addBarang(&pHead);
                 } else if(option == '3'){
-                    continue;
+                   hapusBarang(&pHead);
                 } else if(option == '4'){
                     traverseQueue(pQueue);
                     system("pause");
