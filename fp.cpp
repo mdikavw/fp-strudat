@@ -244,15 +244,7 @@ int main(){
                 } else if(option == '2'){
                     addBarang(&pHead);
                 } else if(option == '3'){
-                   	printf("1. Hapus Node Awal \n");
-                	printf("2. Hapus Node Akhir \n");
-                	scanf(" %c", &pilihan1);
-                	if(pilihan1 == '1'){
-                		pHead = hapusDataAwal(pHead);
-					}
-			else if(pilihan1 == '2'){
-				pHead = hapusDataAkhir(pHead);
-					}
+                   hapusBarang(&pHead);
                 } else if(option == '4'){
                     traverseQueue(pQueue);
                     system("pause");
