@@ -84,33 +84,45 @@ void addBarang(ListNode ** pHead){
     pCur->next = pNew;
 }
 
-ListNode * hapusDataAwal(ListNode * head){
-	if(head == NULL)
-		return head;
-	ListNode *first = head;
-	head = head->next;
-	first->next = NULL;
+void hapusBarang(ListNode ** pHead){
+    ListNode * pPrev, * pCur;
+    char namaBarang[30];
+    
+    pCur = *pHead;
+    pPrev = NULL;
+    if(pCur == NULL){
+        printf("Daftar produk kosong\n");
+        system("pause");
+        return;
+    }
+    traverseList(*pHead);
+    printf("Masukkan nama barang yang akan dihapus: ");
+    scanf(" %s", namaBarang);
 
-	free(first);
-	return head;
+    while(pCur != NULL && strcmp(pCur->nama, namaBarang) != 0){
+        pPrev = pCur;
+        pCur = pCur->next;
+    }
+    if(pCur == NULL){
+        printf("Nama barang tidak ditemukan\n");
+        system("pause");
+        return;
+    }
+    if(pCur == *pHead){
+        *pHead = pCur->next;
+        free(pCur);
+        return;
+    }
+    if(pCur->next == NULL){
+        pPrev->next = NULL;
+        free(pCur);
+        return;
+    }
+    pPrev->next = pCur->next;
+    free(pCur);
+    return;
 }
 
-ListNode * hapusDataAkhir(ListNode * tail){
-	if(tail == NULL)
-		return tail;
-
-	ListNode *cursor = tail;
-	ListNode *back = NULL;
-	while(cursor->next != NULL){
-		back = cursor;
-		cursor = cursor->next;
-	}
-	if(back != NULL)
-		back->next = NULL;
-
-	free (cursor);
-
-	return tail;
 
 void enQueue(Queue * pQueue, ListNode * pHead){
     int MAX = 5;
