@@ -140,7 +140,7 @@ void enQueue(Queue * pQueue, ListNode * pHead){
         system("pause");
         return;
     }
-
+    traverseList(pHead);
     printf("Masukkan nama barang: ");
     scanf(" %s", namaBarang);
     printf("Masukkan nama pembeli: ");
