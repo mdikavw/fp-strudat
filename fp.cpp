@@ -95,6 +95,23 @@ ListNode * hapusDataAwal(ListNode * head){
 	return head;
 }
 
+ListNode * hapusDataAkhir(ListNode * tail){
+	if(tail == NULL)
+		return tail;
+
+	ListNode *cursor = tail;
+	ListNode *back = NULL;
+	while(cursor->next != NULL){
+		back = cursor;
+		cursor = cursor->next;
+	}
+	if(back != NULL)
+		back->next = NULL;
+
+	free (cursor);
+
+	return tail;
+
 void enQueue(Queue * pQueue, ListNode * pHead){
     int MAX = 5;
     QueueNode * pNew;
