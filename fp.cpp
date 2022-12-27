@@ -84,6 +84,17 @@ void addBarang(ListNode ** pHead){
     pCur->next = pNew;
 }
 
+ListNode * hapusDataAwal(ListNode * head){
+	if(head == NULL)
+		return head;
+	ListNode *first = head;
+	head = head->next;
+	first->next = NULL;
+
+	free(first);
+	return head;
+}
+
 void enQueue(Queue * pQueue, ListNode * pHead){
     int MAX = 5;
     QueueNode * pNew;
