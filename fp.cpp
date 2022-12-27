@@ -63,8 +63,14 @@ void addBarang(ListNode ** pHead){
         return;
     }
     traverseList(*pHead);
-    printf("Masukkan barang setelah: ");
+    printf("Masukkan barang setelah (ketik 'depan' jika ingin memasukkan barang di depan): ");
     scanf(" %s", masukkanSetelah);
+
+    if(strcmp(masukkanSetelah, "depan") == 0){
+        pNew->next = *pHead;
+        *pHead = pNew;
+        return;
+    }
 
     while(pCur != NULL && strcmp(pCur->nama, masukkanSetelah) != 0){
         pCur = pCur->next;
