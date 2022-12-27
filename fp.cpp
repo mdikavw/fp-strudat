@@ -121,13 +121,36 @@ void enQueue(Queue * pQueue, ListNode * pHead){
     if(pQueue->front == NULL){
         pQueue->front = pNew;
         pQueue->rear = pNew;
+        pNew->next = NULL;
         pQueue->length++;
         system("pause");
         return;
     }
     pQueue->rear->next = pNew;
     pQueue->rear = pNew;
+    pNew->next = NULL;
     pQueue->length++;
+}
+
+void deQueue(Queue * pQueue){
+    QueueNode * pCur;
+    pCur = pQueue->front;
+    if(pCur == NULL){
+        printf("Antrian kosong\n");
+        system("pause");
+        return;
+    }
+    if(pCur->next == NULL){
+        pQueue->front = NULL;
+        pQueue->rear = NULL;
+        system("pause");
+    } else {
+        pQueue->front = pCur->next;
+    }
+    free(pCur);
+    pQueue->length--;
+    system("pause");
+    return;
 }
 
 void traverseQueue(Queue pQueue){
@@ -185,6 +208,8 @@ int main(){
                 } else if(option == '4'){
                     traverseQueue(pQueue);
                     system("pause");
+                } else if(option == '5'){
+                    deQueue(&pQueue);
                 }
                 system("cls");
             } while (option != 'q');
