@@ -268,7 +268,7 @@ int main(){
                 printf("Masukkan pilihan: ");
                 scanf(" %c", &option);
                 if(option == '1'){
-                    continue;
+                    traverseList(pHead);
                 } else if(option == '2'){
                     enQueue(&pQueue, pHead);
                 } 
